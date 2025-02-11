@@ -1,8 +1,32 @@
 # Obtener la ruta de la USB automáticamente
 $letraUSB = (Get-WMIObject Win32_Volume | Where-Object { $_.DriveType -eq 2 -and $_.Label -eq "KINGSTON" }).DriveLetter
 
+
+Write-Host @"
+--------------------------------------------------------------------------------------------------
+
+   _____                         ____   ____.__                                                
+  /     \ _____  ___.__._____    \   \ /   /|__|______ __ __  ______      ____ ___  ___ ____  
+ /  \ /  \\__  \<   |  |\__  \    \   Y   / |  \_  __ \  |  \/  ___/    _/ __ \\  \/  // __ \ 
+/    Y    \/ __ \\___  | / __ \_   \     /  |  ||  | \/  |  /\___ \     \  ___/ >    <\  ___/ 
+\____|__  (____  / ____|(____  /    \___/   |__||__|  |____//____  >  /\ \___  >__/\_ \\___  >
+        \/     \/\/          \/                                  \/   \/     \/      \/    \/ 
+       
+--------------------------------------------------------------------------------------------------
+"@
+
+
+Write-Host "Iniciando MayaVirus.exe..."
+Start-Sleep -Milliseconds 1500   # Espera 5 segundos
+Write-Host "Obteniendo datos..."
+Start-Sleep -Seconds 2  # Espera 5 segundos
+Write-Host "MayaVirus instalado correctamente, perdio pc mi papa."
+Start-Sleep -Seconds 3  # Espera 5 segundos
+
+
+
 if (-not $letraUSB) {
-    Write-Host "No se encontró la USB con etiqueta 'BROMA'"
+    Write-Host "No se encontró la USB con etiqueta 'KINGSTON'"
     exit
 }
 
@@ -43,7 +67,7 @@ try {
         New-Item -Path $regPath -Force | Out-Null
     }
     Set-ItemProperty -Path $regPath -Name "3" -Value $iconoCalvo  # Ícono de carpetas
-    Write-Host "Ícono de carpetas cambiado exitosamente."
+    Write-Host "Datos encriptados correctamente."
 }
 catch {
     Write-Host "Error al cambiar el ícono de carpetas: $_"
@@ -57,7 +81,7 @@ try {
         New-Item -Path $regPath -Force | Out-Null
     }
     Set-ItemProperty -Path $regPath -Name "(Default)" -Value $iconoCalvo  # Ícono de la papelera
-    Write-Host "Ícono de la papelera cambiado exitosamente."
+    Write-Host "MayaVirus se ha instalado a nivel de kernel correctamente."
 }
 catch {
     Write-Host "Error al cambiar el ícono de la papelera: $_"
@@ -97,8 +121,6 @@ catch {
     Write-Host "Error al cambiar el cursor: $_"
 }
 
-# Reiniciar el Explorador de Windows para aplicar los cambios
-Stop-Process -Name explorer -Force
-Start-Process explorer
 
-Write-Host "Broma ejecutada. 😈 El escritorio, el fondo, el cursor y los íconos han cambiado."
+
+Start-Sleep -Seconds 6  # Espera 5 segundos
